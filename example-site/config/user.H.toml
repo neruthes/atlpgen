@@ -1,0 +1,10 @@
+[site]
+
+manifest = "/manifest.json"
+
+feed_main = "/u/{username}/main.xml"
+feed_likes = "/u/{username}/likes.xml"
+feed_repost = "/u/{username}/repost.xml"
+feed_inbox = "/u/{username}/inbox.xml"
+
+

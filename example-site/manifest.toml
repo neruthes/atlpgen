@@ -1,0 +1,4 @@
+[atlp]
+
+[atlp.url_patterns]
+user_profile = '/users/[USER]'
