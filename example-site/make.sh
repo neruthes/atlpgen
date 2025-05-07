@@ -5,7 +5,7 @@
 
 case "$1" in
     usersdata/ )
-        tomlq . manifest.toml > dist/manifest.json
+        tomlq . atlp-manifest.toml > dist/atlp-manifest.json
         (cd usersdata && ls) | while read -r username; do
             mkdir -p "dist/u/$username"
             cat config/user.H.toml "usersdata/$username/$username.toml" | tomlq . > "dist/u/$username/profile.json"

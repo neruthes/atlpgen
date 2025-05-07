@@ -1,0 +1,8 @@
+[atlp]
+
+[atlp.features]
+inbox = false
+
+[atlp.url_patterns]
+user_profile_human = '/u/{username}/'
+user_profile_machine = '/u/{username}/profile.json'
