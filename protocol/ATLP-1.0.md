@@ -10,12 +10,22 @@ Last revision: 2025-05-06
 ## Introduction
 
 Autonomous Timeline Protocol (ATLP) is a suite of metadata for RSS.
-ATLP defines extension features that
-composite a set of plain RSS feeds into a SNS-like timeline,
-enabling optional interaction features across instances.
+ATLP defines features that compose a set of plain RSS feeds into a SNS-like timeline,
+enabling optional interaction features across sites.
 
 ATLP prioritizes static publishing like traditional RSS;
-dynamic features such as inbox are optional.
+dynamic features such as inbox are optional for site implementations.
+
+The core idea of ATLP is behavior directives.
+A behavior directive is a hint for how an action should be done.
+For example, a client app may want to fetch the latest post of a particular user (identified by a handle).
+It will, like handling multi-stage software building,
+follow a chain of directives to obtain site layout,
+then user profile page URL for humans,
+then user profile data URL for machines,
+then main feed RSS URL for machines,
+then post item permalink for humans,
+then post item object URL for machines.
 
 
 
@@ -51,6 +61,43 @@ Data retrieval of user profile and timeline from a HANDLE consists of several st
 - For each HANDLE, get its hostname and username.
 - Fetch the atlp-manifest.json file from hostname over HTTP/HTTPS.
 - Get the user profile pattern in it.
+
+
+
+## Types of URLs
+
+
+### User Profile Page (UPP)
+A human-friendly profile page for web browsers.
+
+### User Profile Metadata (UPM)
+A machine-friendly profile JSON.
+
+### Post Item Permalink (PIP)
+A human-friendly page for a post item.
+
+### Post Item Object (PIO)
+A machine-friendly post item data JSON.
+
+### Main Feed (MF)
+A machine-friendly feed of posts.
+
+### Shares Feed (SF)
+A machine-friendly feed of posts being shared (or known as retweeted/reposted) by the user.
+Contains permalinks to other posts. If body text is supplied, treat as quote-retweet comment.
+
+### Likes Feed (LF)
+A machine-friendly feed of posts being like by the user.
+Only contains permalinks to other posts.
+
+### Comments Feed (CF)
+A machine-friendly feed of posts being commented by the user.
+Should contain post permalink (to indicate source) and text body (comment content).
+
+### Full Archive
+The feeds above are not meant to contain all history.
+A full history archive may be available on a site for older posts.
+Also, a site may wish to make posts ephemeral for some months only.
 
 
 
